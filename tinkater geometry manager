@@ -1,0 +1,61 @@
+'''
+from tkinter import *
+root=Tk()
+root.title('Number pad')
+root.geometry('250x300')
+nums = [[9,8,7],[6,5,4],[3,2,1],['#',0,'*']]
+for i in range(4):
+    root.columnconfigure(i,weight=1,minsize=75)
+    root.rowconfigure(i,weight=1,minsize=50)
+for i in range(4):
+    for j in range(3):
+        frame=Frame(
+            master=root,
+            relief=SUNKEN,
+            borderwidth=1,
+            bg='#d0efff'
+
+        )
+        frame.grid(row=i,column=j,sticky='nsew')
+        label=Label(master=frame,text=nums[i][j],bg='#d0efff',font=('Arial',18))
+        label.pack(expand=True,fill='both',padx=5,pady=5)
+root.mainloop()
+'''
+from tkinter import *
+from datetime import date
+root=Tk()
+root.title('e-mail Tab')
+root.geometry('400x300')
+lbl=Label(text='welcomne to E-mail',fg='white',bg='#072F5F',height=1,width=300 )
+name_lbl=Label(text='enter_name',bg='#3895D3')
+name_entry=Entry()
+mail_lbl=Label(text='enter_mail_id',bg='#3895D3')
+mail_entry=Entry()
+password_lbl=Label(text='enter_password',bg='#3895D3')
+password_entry=Entry()
+def display():
+    name=name_entry.get()
+    mail=mail_entry.get()
+    password=password_entry.get()
+    global message
+    message="success login \nToday's date is:"
+    greet1='hello\n'+name+"\n"
+    greet2="your mail id is \n"+mail+"\n"
+    greet3="your password is \n"+password+"\n"
+    text_box.insert(END, greet1)
+    text_box.insert(END, greet2)
+    text_box.insert(END, greet3)
+    text_box.insert(END, message)
+    text_box.insert(END, date.today())
+text_box=Text(height=6)
+btn = Button(text='login',command=display,height=1,bg='#1261A0',fg='white')
+lbl.pack()
+name_lbl.pack()
+name_entry.pack()
+mail_lbl.pack()
+mail_entry.pack()
+password_lbl.pack()
+password_entry.pack()
+btn.pack()
+text_box.pack()
+root.mainloop()
